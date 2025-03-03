@@ -10,10 +10,10 @@ function App() {
       <CssBaseline />
       <Header />
       <Grid container spacing={3} style={{ width: "100%" }}>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={4} style={{ paddingTop: "100px" }}>
           <List />
         </Grid>
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12} md={8} style={{ paddingTop: "100px" }}>
           <Map />
         </Grid>
       </Grid>

@@ -7,7 +7,7 @@ import Map from "./components/Map/Map";
 import { getPlacesData } from "./api";
 
 function App() {
-  const [place, setPlace] = useState([]);
+  const [places, setPlaces] = useState([]);
   const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
   const [bounds, setBounds] = useState(null);
   const [childClicked, setChildClicked] = useState(null);
@@ -24,7 +24,7 @@ function App() {
     console.log(coordinates, bounds);
     getPlacesData().then((data) => {
       console.log(data);
-      setPlace(data);
+      setPlaces(data);
     });
   });
   return (
@@ -33,7 +33,7 @@ function App() {
       <Header />
       <Grid container spacing={3} style={{ width: "100%" }}>
         <Grid item xs={12} md={4} style={{ paddingTop: "100px" }}>
-          <List />
+          <List places={places} />
         </Grid>
         <Grid item xs={12} md={8} style={{ paddingTop: "100px" }}>
           <Map

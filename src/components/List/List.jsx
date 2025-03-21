@@ -9,7 +9,7 @@ import {
   FormControl,
   Select,
 } from "@material-ui/core";
-import PlaceDetail from "../PlaceDetails/PlaceDetails";
+import PlaceDetails from "../PlaceDetails/PlaceDetails";
 
 import useStyles from "./styles";
 
@@ -17,6 +17,7 @@ const List = ({ places }) => {
   const classes = useStyles();
   const [type, setType] = useState("restaurants");
   const [rating, setRating] = useState("");
+  // console.log(places);
 
   return (
     <div className={classes.container}>
@@ -43,7 +44,7 @@ const List = ({ places }) => {
       <Grid container spacing={3} className={classes.list}>
         {places?.map((place, i) => (
           <Grid item key={i} xs={12}>
-            <PlaceDetail place={place} />
+            <PlaceDetails place={place} />
           </Grid>
         ))}
       </Grid>

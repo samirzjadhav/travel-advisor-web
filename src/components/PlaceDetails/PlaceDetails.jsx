@@ -43,6 +43,7 @@ const Place = ({ place }) => {
         </Box>
         {place?.awards?.map((award) => (
           <Box
+            my={1}
             display="flex"
             justifyContent="space-between"
             alignItems="center"
@@ -53,6 +54,46 @@ const Place = ({ place }) => {
             </Typography>
           </Box>
         ))}
+        {place?.cuisine?.map(({ name }) => (
+          <Chip key={name} size="small" label={name} className="" />
+        ))}
+        {place?.address && (
+          <Typography
+            gutterBottom
+            variant="subttile2"
+            color="textSecondary"
+            className={classes.subtitle}
+          >
+            <LocationOnIcon /> {place.address}
+          </Typography>
+        )}
+        {place?.phone && (
+          <Typography
+            gutterBottom
+            variant="subttile2"
+            color="textSecondary"
+            className={classes.spacing}
+          >
+            <PhoneIcon /> {place.address}
+          </Typography>
+        )}
+
+        <CardActions>
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => window.open(place.web_url, "_blank")}
+          >
+            Trip Advisor
+          </Button>
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => window.open(place.website, "_blank")}
+          >
+            Website
+          </Button>
+        </CardActions>
       </CardContent>
     </Card>
   );

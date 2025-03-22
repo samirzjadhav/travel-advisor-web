@@ -9,7 +9,7 @@ import { getPlacesData } from "./api";
 function App() {
   const [places, setPlaces] = useState([]);
   const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
-  const [bounds, setBounds] = useState(null);
+  const [bounds, setBounds] = useState({});
   const [childClicked, setChildClicked] = useState(null);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ function App() {
 
   useEffect(() => {
     console.log(coordinates, bounds);
-    getPlacesData().then((data) => {
+    getPlacesData(bounds.sw, bounds.ne).then((data) => {
       console.log(data);
       setPlaces(data);
     });

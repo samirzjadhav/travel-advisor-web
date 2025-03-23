@@ -26,7 +26,7 @@ function App() {
       console.log(data);
       setPlaces(data);
     });
-  });
+  }, [coordinates, bounds]);
   return (
     <div className="App">
       <CssBaseline />
@@ -40,6 +40,7 @@ function App() {
             setCoordinates={setCoordinates}
             setBounds={setBounds}
             coordinates={coordinates}
+            places={places}
           />
         </Grid>
       </Grid>

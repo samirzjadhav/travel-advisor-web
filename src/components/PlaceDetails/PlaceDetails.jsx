@@ -22,7 +22,11 @@ const Place = ({ place }) => {
     <Card elevation={6}>
       <CardMedia
         style={{ height: 350 }}
-        image={place.photo ? place.photo.image.large.url : ""}
+        image={
+          place.photo
+            ? place.photo.images.large.url
+            : "https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg"
+        }
         title={place.name}
       />
       <CardContent>
@@ -41,8 +45,9 @@ const Place = ({ place }) => {
             {place.ranking}
           </Typography>
         </Box>
-        {place?.awards?.map((award) => (
+        {place?.awards?.map((award, index) => (
           <Box
+            key={index}
             my={1}
             display="flex"
             justifyContent="space-between"
@@ -60,7 +65,7 @@ const Place = ({ place }) => {
         {place?.address && (
           <Typography
             gutterBottom
-            variant="subttile2"
+            variant="subtitle2"
             color="textSecondary"
             className={classes.subtitle}
           >
@@ -74,7 +79,7 @@ const Place = ({ place }) => {
             color="textSecondary"
             className={classes.spacing}
           >
-            <PhoneIcon /> {place.address}
+            <PhoneIcon /> {place.phone}
           </Typography>
         )}
 

@@ -39,6 +39,12 @@ const Place = ({ place }) => {
             {place.price_level}
           </Typography>
         </Box>
+        <Box display="flex" justifyContent="space-between" >
+          <Rating size="small" value={Number(place.rating)} readOnly />
+          <Typography gutterBottom variant="subtitle1">
+            Out of {place.num_reviews} review
+          </Typography>
+        </Box>
         <Box display="flex" justifyContent="space-between">
           <Typography variant="subtitle1">Ranking</Typography>
           <Typography gutterBottom variant="subtitle1">

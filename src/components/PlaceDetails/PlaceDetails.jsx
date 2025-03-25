@@ -16,8 +16,10 @@ import Rating from "@material-ui/lab/Rating";
 
 import useStyles from "./styles";
 
-const Place = ({ place }) => {
+const Place = ({ place, selected, refProp }) => {
   const classes = useStyles();
+  if (selected)
+    refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   return (
     <Card elevation={6}>
       <CardMedia
@@ -39,7 +41,7 @@ const Place = ({ place }) => {
             {place.price_level}
           </Typography>
         </Box>
-        <Box display="flex" justifyContent="space-between" >
+        <Box display="flex" justifyContent="space-between">
           <Rating size="small" value={Number(place.rating)} readOnly />
           <Typography gutterBottom variant="subtitle1">
             Out of {place.num_reviews} review

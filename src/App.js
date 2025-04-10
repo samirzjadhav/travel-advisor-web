@@ -32,13 +32,15 @@ function App() {
   }, [rating]);
 
   useEffect(() => {
-    setIsLoading(true);
-    getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
-      setPlaces(data);
-      setIsLoading(false);
-      setFilteredPlaces([]);
-    });
-  }, [type, coordinates, bounds]);
+    if (bounds.ne && bounds.sw) {
+      setIsLoading(true);
+      getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
+        setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
+        setIsLoading(false);
+        setFilteredPlaces([]);
+      });
+    }
+  }, [type, bounds]);
   return (
     <div className="App">
       <CssBaseline />
@@ -47,7 +49,7 @@ function App() {
         <Grid item xs={12} md={4} style={{ paddingTop: "100px" }}>
           <List
             places={filteredPlaces.length ? filteredPlaces : places}
-            childClicked={childClicked}   
+            childClicked={childClicked}
             isLoading={isLoading}
             type={type}
             setType={setType}
